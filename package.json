@@ -1,0 +1,19 @@
+{
+  "name": "vite-plugin-vue-chrome-i18n",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "playground:build": "cd ./playground && vue-tsc && vite build"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0",
+    "vue-tsc": "^1.8.3"
+  }
+}
