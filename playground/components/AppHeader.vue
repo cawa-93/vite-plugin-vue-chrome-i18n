@@ -1,15 +1,13 @@
-<!--suppress ALL -->
+<!--suppress JsonStandardCompliance -->
 <script setup lang="ts">
-import AppHeader from "./components/AppHeader.vue";
+
 </script>
 
 <template>
-  <div>
-    --
-    <AppHeader/>
-  </div>
+<div>
+  header--
+</div>
 </template>
-
 <!-- language=json -->
 <chrome-i18n lang="json" locale="uk">
 
