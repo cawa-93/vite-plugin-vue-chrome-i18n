@@ -5,7 +5,7 @@
     "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-
+    "types": ["vite/client", "chrome"],
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -21,10 +21,9 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "playground/**/*.ts",
-    "playground/**/*.d.ts",
-    "playground/**/*.tsx",
-    "playground/**/*.vue"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "./**/*.ts",
+    "./**/*.d.ts",
+    "./**/*.tsx",
+    "./**/*.vue"
+  ]
 }

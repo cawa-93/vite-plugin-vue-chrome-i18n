@@ -1,11 +1,13 @@
 <!--suppress JsonStandardCompliance -->
 <script setup lang="ts">
 
+import {getMessage} from 'virtual:chrome-i18n'
 </script>
 
 <template>
 <div>
-  header--
+  header
+  {{getMessage('title222')}}
 </div>
 </template>
 <!-- language=json -->

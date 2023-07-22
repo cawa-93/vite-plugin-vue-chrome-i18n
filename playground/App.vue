@@ -1,11 +1,13 @@
 <!--suppress ALL -->
 <script setup lang="ts">
 import AppHeader from "./components/AppHeader.vue";
+import {getMessage} from 'virtual:chrome-i18n'
+
 </script>
 
 <template>
   <div>
-    --
+    {{getMessage('title')}}
     <AppHeader/>
   </div>
 </template>

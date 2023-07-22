@@ -8,6 +8,29 @@ export function main(): Plugin {
     return {
         name: 'vite-plugin-vue-chrome-i18n',
         enforce: 'pre',
+
+        resolveId(source, importer) {
+            if (source !== 'virtual:chrome-i18n') {
+                return
+            }
+
+            const importerFile = importer?.split('?')[0] + '?virtual-chrome-i18n'
+
+            return {id: `\0${importerFile}`}
+        },
+
+        load(id) {
+            if (!id.endsWith('?virtual-chrome-i18n')) {
+                return
+            }
+
+            const importer = id.replaceAll('\0', '').split('?').at(0) as string
+            console.log({importer})
+            const messageScope = getMessageKeyFromPath(importer)
+
+            return `export const getMessage = m => chrome.i18n.getMessage('${messageScope}_'+m)`
+        },
+
         transform(code, id) {
             if (!/\.vue\?vue&type=chrome-i18n/.test(id)) {
                 return

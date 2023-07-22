@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsup ./src/index.ts --format esm --dts",
-    "playground:build": "cd ./playground && vue-tsc && vite build",
+    "playground:dev": "cd ./playground && vite",
+    "playground:build": "cd ./playground && vue-tsc && vite build --minify=false",
     "test": "vitest"
   },
   "dependencies": {
+    "@types/chrome": "^0.0.241",
     "vue": "^3.3.4"
   },
   "devDependencies": {
