@@ -6,6 +6,19 @@ import {main} from "../src";
 export default defineConfig({
   plugins: [
       vue(),
-      main(),
+      main({
+          initialLocales: {
+              en: {
+                  APP_NAME: {
+                      message: 'APP_NAME'
+                  }
+              },
+              uk: {
+                  APP_NAME: {
+                      message: 'APP_NAME'
+                  }
+              }
+          }
+      }),
   ],
 })

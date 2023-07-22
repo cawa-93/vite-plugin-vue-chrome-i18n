@@ -1,9 +1,22 @@
 import {Plugin} from "vite";
 import {getMessageKeyFromPath} from "./getMessageKeyFromPath.ts";
 
-export function main(): Plugin {
+export type Locale = {
+    message: string,
+    description?: string,
+    placeholders?: Record<string, {
+        content: string,
+        example?: string
+    }>
+}
 
-    const idToMessagesMap = new Map<string, string>()
+export type PluginOptions = {
+    initialLocales?: Record<string, Record<string, Locale>>
+}
+
+export function main({initialLocales = {}}: PluginOptions = {}): Plugin {
+
+    const idToMessagesMap = new Map<string, Record<string, Locale>>()
 
     return {
         name: 'vite-plugin-vue-chrome-i18n',
@@ -39,7 +52,7 @@ export function main(): Plugin {
         },
 
         generateBundle() {
-            const allLocales: Record<string, any> = {}
+            const allLocales = initialLocales
 
             for (const [id, messages] of idToMessagesMap) {
                 const locale = id.match(/(?<=&locale=)[^&]+(?=&)/)?.[0]
