@@ -14,7 +14,7 @@ export type PluginOptions = {
     initialLocales?: Record<string, Record<string, Locale>>
 }
 
-export function main({initialLocales = {}}: PluginOptions = {}): Plugin {
+export default function ({initialLocales = {}}: PluginOptions = {}): Plugin {
 
     const idToMessagesMap = new Map<string, Record<string, Locale>>()
 

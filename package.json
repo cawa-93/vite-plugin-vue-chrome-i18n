@@ -1,10 +1,15 @@
 {
   "name": "vite-plugin-vue-chrome-i18n",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": "./dist/index.js",
+  "keywords": [
+    "vite-plugin"
+  ],
   "scripts": {
-    "dev": "vite",
     "build": "tsup ./src/index.ts --format esm --dts",
     "playground:dev": "cd ./playground && vite",
     "playground:build": "cd ./playground && vue-tsc && vite build --minify=false",
