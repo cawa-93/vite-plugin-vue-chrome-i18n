@@ -25,7 +25,6 @@ export function main(): Plugin {
             }
 
             const importer = id.replaceAll('\0', '').split('?').at(0) as string
-            console.log({importer})
             const messageScope = getMessageKeyFromPath(importer)
 
             return `export const getMessage = m => chrome.i18n.getMessage('${messageScope}_'+m)`

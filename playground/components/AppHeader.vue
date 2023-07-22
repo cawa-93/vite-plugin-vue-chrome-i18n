@@ -7,7 +7,7 @@ import {getMessage} from 'virtual:chrome-i18n'
 <template>
 <div>
   header
-  {{getMessage('title222')}}
+  {{getMessage('title')}}
 </div>
 </template>
 <!-- language=json -->
