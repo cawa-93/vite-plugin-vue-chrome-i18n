@@ -23,7 +23,8 @@ export default function ({initialLocales = {}}: PluginOptions = {}): Plugin {
         enforce: 'pre',
 
         resolveId(source, importer) {
-            if (source !== 'virtual:chrome-i18n') {
+            console.log({source, importer})
+            if (!source.startsWith('vite-plugin-vue-chrome-i18n/getMessage.') || !importer || !/\?vue&type=script/.test(importer)) {
                 return
             }
 
@@ -40,7 +41,7 @@ export default function ({initialLocales = {}}: PluginOptions = {}): Plugin {
             const importer = id.replaceAll('\0', '').split('?').at(0) as string
             const messageScope = getMessageKeyFromPath(importer)
 
-            return `export const getMessage = m => chrome.i18n.getMessage('${messageScope}_'+m)`
+            return `export const getMessage = (m,p) => chrome.i18n.getMessage('${messageScope}_'+m,p) || chrome.i18n.getMessage(m,p)`
         },
 
         transform(code, id) {
@@ -49,6 +50,8 @@ export default function ({initialLocales = {}}: PluginOptions = {}): Plugin {
             }
 
             idToMessagesMap.set(id, JSON.parse(code))
+
+            return '{}'
         },
 
         generateBundle() {
@@ -83,3 +86,5 @@ export default function ({initialLocales = {}}: PluginOptions = {}): Plugin {
         }
     }
 }
+
+

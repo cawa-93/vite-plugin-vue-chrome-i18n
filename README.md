@@ -1,18 +1,72 @@
-# Vue 3 + TypeScript + Vite
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+---
 
-## Recommended IDE Setup
+...
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support For `.vue` Imports in TS
+## Terms of use<sup>[[?]](https://github.com/Tyrrrz/.github/blob/master/docs/why-so-political.md)</sup>
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+By using this project or its source code, for any purpose and in any shape or form, you grant your **implicit agreement** to all the following statements:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- You **condemn Russia and its military aggression against Ukraine**
+- You **recognize that Russia is an occupant that unlawfully invaded a sovereign state**
+- You **support Ukraine's territorial integrity, including its claims over temporarily occupied territories of Crimea and Donbas**
+- You **reject false narratives perpetuated by Russian state propaganda**
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Installation
+
+```bash
+npm i -D vite-plugin-vue-chrome-i18n
+```
+
+## Usage
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import VueChromeI18n from "vite-plugin-vue-chrome-i18n";
+
+export default defineConfig({
+    plugins: [
+        vue(),
+        VueChromeI18n(),
+    ],
+})
+```
+
+```vue
+<!-- Any vue single file component -->
+<script setup>
+import {getMessage} from "virtual:chrome-i18n";
+</script>
+
+<chrome-i18n lang="json" locale="uk">
+{
+"$schema": "https://json.schemastore.org/browser.i18n.json",
+    "title": {
+        "message": "uk-title"
+    }
+}
+</chrome-i18n>
+
+<chrome-i18n lang="json" locale="en">
+{
+    "$schema": "https://json.schemastore.org/browser.i18n.json",
+    "title": {
+        "message": "en-title"
+    }
+}
+</chrome-i18n>
+
+<template>
+  <div>{{ getMessage('title') }}</div>
+</template>
+```
+
+### TypeScrip
+
+... 
+### Why vite

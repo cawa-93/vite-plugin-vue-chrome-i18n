@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <script setup lang="ts">
 import AppHeader from "./components/AppHeader.vue";
-import {getMessage} from 'virtual:chrome-i18n'
+import {getMessage} from 'vite-plugin-vue-chrome-i18n/getMessage.js'
 
 </script>
 
