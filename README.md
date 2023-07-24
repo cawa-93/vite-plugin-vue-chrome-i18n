@@ -2,7 +2,7 @@
 
 ---
 
-...
+A plugin for the Vite that extracts and scope translations from Vue Single File Component and combines them into a localization file for browser extensions.
 
 
 ## Terms of use<sup>[[?]](https://github.com/Tyrrrz/.github/blob/master/docs/why-so-political.md)</sup>
@@ -23,6 +23,10 @@ npm i -D vite-plugin-vue-chrome-i18n
 
 ## Usage
 
+First add plugin to your vite configuration.
+
+**Note:** This plugin was designed to be used alongside with `@vitejs/plugin-vue`.
+
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
@@ -32,41 +36,61 @@ import VueChromeI18n from "vite-plugin-vue-chrome-i18n";
 export default defineConfig({
     plugins: [
         vue(),
-        VueChromeI18n(),
+        VueChromeI18n({
+            // Optional. 
+            // You can define any global localisation messages with will be defined for all components 
+            initialLocales: {
+                en: {
+                    APP_NAME: {
+                        message: 'My App'
+                    }
+                },
+                uk: {
+                    APP_NAME: {
+                        message: 'Мій застосунок'
+                    }
+                }
+            }
+        }),
     ],
 })
 ```
 
+To add localized messages, use the `<chrome-i18n>` block with the `locale` attribute. One for each locale you need.
+
+Inside of this block, enter the message in JSON format according to the [Localization message formats](https://developer.chrome.com/docs/extensions/mv3/i18n-messages/).
+
+Note that:
+1. All messages inside the component will be isolated from other messages. So, in most cases, you don't have to worry about naming conflicts.
+2. '$schema' will be automatically excluded from merged messages. So you can safely use it to get hints in your IDE.
+
+To get access to translated message use `getMessage` function from `vite-plugin-vue-chrome-i18n/getMessage.js`. This function is synonymous with notifications. Under the hood, it automatically searches for messages in an isolated scope of a component or in global scope.
 ```vue
 <!-- Any vue single file component -->
 <script setup>
-import {getMessage} from "virtual:chrome-i18n";
+import { getMessage } from "vite-plugin-vue-chrome-i18n/getMessage.js";
+
+console.log( getMessage('title') ) // 'Hello!' | 'Привіт!' // messages from local scope
+console.log( getMessage('APP_NAME') ) // 'My App' | 'Мій застосунок' // messages from global scope
 </script>
 
-<chrome-i18n lang="json" locale="uk">
+<chrome-i18n locale="uk">
 {
-"$schema": "https://json.schemastore.org/browser.i18n.json",
-    "title": {
-        "message": "uk-title"
-    }
+  "$schema": "https://json.schemastore.org/browser.i18n.json",
+  "title": {
+    "message": "Привіт!"
+  }
 }
 </chrome-i18n>
 
-<chrome-i18n lang="json" locale="en">
+<chrome-i18n locale="en">
 {
-    "$schema": "https://json.schemastore.org/browser.i18n.json",
-    "title": {
-        "message": "en-title"
-    }
+  "$schema": "https://json.schemastore.org/browser.i18n.json",
+  "title": {
+    "message": "Hello!"
+  }
 }
 </chrome-i18n>
-
-<template>
-  <div>{{ getMessage('title') }}</div>
-</template>
 ```
 
-### TypeScrip
-
-... 
-### Why vite
+After build, you should get `_locales/en/messages.json` and `_locales/uk/messages.json` files with all extracted and scoped messages.
