@@ -1,6 +1,22 @@
 {
   "name": "vite-plugin-vue-chrome-i18n",
   "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cawa-93/vite-plugin-vue-chrome-i18n"
+  },
+  "bugs": {
+    "url": "https://github.com/cawa-93/vite-plugin-vue-chrome-i18n/issues"
+  },
+  "author": {
+    "name": "Alex Kozack",
+    "url": "https://kozack.me"
+  },
+  "funding": {
+    "type" : "individual",
+    "url" : "https://www.buymeacoffee.com/kozack"
+  },
+  "license": "(MIT AND GPL-3.0)",
   "type": "module",
   "files": [
     "dist"
