@@ -8,31 +8,17 @@ on:
     types: [created]
 
 jobs:
-  build:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  publish-npm:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: true
-
-      - run: pnpm run build
-      - run: pnpm run test
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
           registry-url: https://registry.npmjs.org/
 
       - uses: pnpm/action-setup@v2
