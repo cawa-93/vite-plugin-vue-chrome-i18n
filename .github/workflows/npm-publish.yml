@@ -14,8 +14,12 @@ jobs:
   publish-npm:
     needs: test
     runs-on: ubuntu-latest
+
+    # for npm publish --provenance
     permissions:
-      id-token: write # for npm publish --provenance
+      contents: read
+      id-token: write
+
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
@@ -24,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: pnpm
-          node-version: 18
+          node-version: 20
           registry-url: https://registry.npmjs.org/
 
 
