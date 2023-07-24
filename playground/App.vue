@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <script setup lang="ts">
 import AppHeader from "./components/AppHeader.vue";
-import {getMessage} from 'vite-plugin-vue-chrome-i18n/getMessage.js'
+import {getMessage} from '../src/getMessage.ts'
 
 </script>
 
@@ -12,9 +12,7 @@ import {getMessage} from 'vite-plugin-vue-chrome-i18n/getMessage.js'
   </div>
 </template>
 
-<!-- language=json -->
-<chrome-i18n lang="json" locale="uk">
-
+<chrome-i18n locale="uk">
 {
   "$schema": "https://json.schemastore.org/browser.i18n.json",
   "title": {
@@ -24,9 +22,7 @@ import {getMessage} from 'vite-plugin-vue-chrome-i18n/getMessage.js'
 
 </chrome-i18n>
 
-<!-- language=json -->
-<chrome-i18n lang="json" locale="en">
-
+<chrome-i18n locale="en">
 {
   "$schema": "https://json.schemastore.org/browser.i18n.json",
   "title": {

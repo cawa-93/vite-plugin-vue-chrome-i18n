@@ -23,7 +23,7 @@
     "vite-plugin"
   ],
   "scripts": {
-    "build": "tsup ./src/index.ts ./src/getMessage.ts --format esm --dts",
+    "build": "tsup ./src/index.ts ./src/getMessage.ts --format esm --dts --external vue",
     "playground:dev": "cd ./playground && vite",
     "playground:build": "cd ./playground && vue-tsc && vite build --minify=false",
     "test": "vitest"

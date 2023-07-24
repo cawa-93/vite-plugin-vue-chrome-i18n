@@ -1,7 +1,8 @@
 <!--suppress JsonStandardCompliance -->
 <script setup lang="ts">
-
-import {getMessage} from 'vite-plugin-vue-chrome-i18n/getMessage.js'
+import {getMessage} from '../../src/getMessage.ts'
+import {getCurrentInstance} from "vue";
+console.log(getCurrentInstance())
 </script>
 
 <template>
@@ -10,20 +11,17 @@ import {getMessage} from 'vite-plugin-vue-chrome-i18n/getMessage.js'
   {{getMessage('title')}}
 </div>
 </template>
-<!-- language=json -->
-<chrome-i18n lang="json" locale="uk">
-
+<chrome-i18n locale="uk">
 {
   "$schema": "https://json.schemastore.org/browser.i18n.json",
   "title": {
     "message": "uk-title"
   }
 }
-
 </chrome-i18n>
 
 <!-- language=json -->
-<chrome-i18n lang="json" locale="en">
+<chrome-i18n locale="en">
 
 {
   "$schema": "https://json.schemastore.org/browser.i18n.json",
