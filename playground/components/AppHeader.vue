@@ -20,9 +20,7 @@ console.log(getCurrentInstance())
 }
 </chrome-i18n>
 
-<!-- language=json -->
 <chrome-i18n locale="en">
-
 {
   "$schema": "https://json.schemastore.org/browser.i18n.json",
   "title": {

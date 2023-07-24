@@ -43,13 +43,14 @@ export default function ({initialLocales = {}}: PluginOptions = {}): Plugin {
                 if (!locale) {
                     continue
                 }
+                const prefix = getMessageKeyFromPath(id)
                 allLocales[locale] = {
                     ...(allLocales[locale] || {}),
                     ...Object.fromEntries(
                         Object.entries(messages)
                             .filter(([k]) => !k.startsWith('$'))
                             .map(([key, value]) => {
-                                return [getMessageKeyFromPath(id) + '_' + key, value]
+                                return [ prefix + '_' + key, value]
                             })
                     )
                 }
