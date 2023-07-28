@@ -36,7 +36,12 @@
     }
   },
   "keywords": [
-    "vite-plugin"
+    "vite-plugin",
+    "vite-vue-plugin",
+    "chrome-i18n",
+    "browser-i18n",
+    "vue-i18n",
+    "vue-plugin"
   ],
   "scripts": {
     "build": "tsup ./src/index.ts ./src/getMessage.ts --format esm --dts --external vue",
