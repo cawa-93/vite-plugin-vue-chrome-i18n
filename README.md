@@ -2,6 +2,8 @@
 
 ---
 
+# vite-plugin-vue-chrome-i18n
+
 A plugin for the Vite that extracts and scope translations from Vue Single File Component and combines them into a localization file for browser extensions.
 
 <img width="1064" alt="shapes" src="https://github.com/cawa-93/vite-plugin-vue-chrome-i18n/assets/1662812/91488ad3-3729-4748-a343-5e24f9d9235b">
